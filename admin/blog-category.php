@@ -1,3 +1,9 @@
+<?php
+require "includes/dbh.php";
+$sqlCategories = "SELECT * FROM blog_category";
+$queryCategories = mysqli_query($conn,$sqlCategories);
+$numCategories = mysqli_num_rows($queryCategories);
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -27,20 +33,20 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <form role="form">
+                                            <form role="form" method="POST" action="includes/add-category.php">
                                                 <div class="form-group">
                                                     <label>Name</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" name="category-name">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Meta Title</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" name="category-meta-title">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Category Path (lower case, no spaces)</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" name="category-path">
                                                 </div>
-                                                <button type="submit" class="btn btn-default">Add Category</button>
+                                                <button type="submit" class="btn btn-default" name="add-category-btn">Add Category</button>
                                             </form>
                                         </div>
                                     </div>
